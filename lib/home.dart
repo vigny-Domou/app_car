@@ -31,16 +31,21 @@ class _MyHomePageState extends State<MyHomePage> {
   "Jantes alu": false
 };
 
+
  void validate() {
+  carSelected = cars.firstWhere(
+    (car) => car.isElectric == moteurElectrique && car.places == places,
+    orElse: () => cars.first,
+  );
     if (kilometres > 15000 && moteurElectrique) {
       message =
-          "Vous devriez penser à un moteur thermique compte tenu du nombre de kilomètres";
+          "Vous devriez penser à un moteur thermique comme ${carSelected!.name} compte tenu du nombre de kilomètres";
     } else 
     if (kilometres < 5000 && !moteurElectrique) {
       message =
-          "Vous faites peu de kilomètres, pensez à regarder les voitures électriques";
+          "Vous faites peu de kilomètres, pensez à regarder les voitures électriques comme ${carSelected!.name} ";
     } else {
-      message = "Voici la voiture faite pour vous";
+      message = "Voici la voiture faite pour vous de marque ${carSelected!.name} ";
     }
 
     carSelected = cars.firstWhere(
@@ -73,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (carSelected != null) buildResultCard(message, nameController) ,
+                  if (carSelected != null) buildResultCard(message, nameController, carSelected!) ,
 
 
             const SizedBox(height: 20),

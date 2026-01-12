@@ -6,7 +6,7 @@ class Car {
  
   Car({required this.name, required this.url, required this.places, required this.isElectric});
  
-  String get urlString => "assets/$url.jpg";
+  String get urlString => "assets/images/$url.jpg";
 }
 
 final List<Car> cars = [

@@ -2,7 +2,7 @@
 import 'package:card/feature/class_car.dart';
 import 'package:flutter/material.dart';
 
- Column buildResultCard(String message, dynamic nameController ) {
+ Column buildResultCard(String message, dynamic nameController, Car car ) {
     return Column(
       children: [
         Center(
@@ -34,7 +34,7 @@ import 'package:flutter/material.dart';
             height: 130,
             width: double.infinity,
             child: Image.asset(
-               Car.urlString,
+               car.urlString,
              //height: 180,
               width: double.infinity,
               fit: BoxFit.cover,
